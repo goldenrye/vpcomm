@@ -1,0 +1,22 @@
+{
+	admin off
+}
+
+{$VPCOMM_DOMAIN} {
+	# Reuse the host's certbot-managed certificate (e.g. when another web server
+	# owns 80/443 and handles ACME). Mounted by deploy/compose.host-cert.yaml.
+	tls /etc/letsencrypt/live/{$VPCOMM_DOMAIN}/fullchain.pem /etc/letsencrypt/live/{$VPCOMM_DOMAIN}/privkey.pem
+	header {
+		-Server
+		Strict-Transport-Security "max-age=31536000"
+	}
+	@relay path /relay /healthz
+	handle @relay {
+		reverse_proxy relay:8765 {
+			flush_interval -1
+		}
+	}
+	handle {
+		respond "Not found" 404
+	}
+}

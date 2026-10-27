@@ -120,6 +120,23 @@ If the public IP changes, update `.env`, recreate Caddy, and update client URLs.
 Preserve the Caddy data volume to keep the same CA. If you replace that volume,
 securely distribute the new root certificate.
 
+## Sharing a Host That Already Has a Certificate
+
+If another web server already owns ports 80/443 and renews a certificate with
+certbot, reuse that certificate and publish the relay on 8443:
+
+```dotenv
+VPCOMM_DOMAIN=voice.example.com
+VPCOMM_ACCESS_TOKEN=REPLACE_WITH_THE_RANDOM_TOKEN
+VPCOMM_CADDYFILE=./deploy/Caddyfile.host-cert
+COMPOSE_FILE=compose.yaml:deploy/compose.alt-port.yaml:deploy/compose.host-cert.yaml
+```
+
+Clients connect with `--server wss://voice.example.com:8443/relay` and need no
+`--ca`. Caddy does not reload certificate files on its own, so add a certbot
+deploy hook (`/etc/letsencrypt/renewal-hooks/deploy/`) that runs
+`docker compose restart caddy` from the project directory.
+
 ## Operations
 
 - `docker compose logs --tail=50 relay caddy`: inspect operational failures.

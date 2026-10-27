@@ -1,0 +1,6 @@
+# Mount the host's certbot directory read-only for deploy/Caddyfile.host-cert.
+# The whole directory is needed because live/ contains symlinks into archive/.
+services:
+  caddy:
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
