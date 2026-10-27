@@ -1,5 +1,7 @@
 {
 	admin off
+	# Clients send no SNI when connecting to an IP address.
+	default_sni {$VPCOMM_DOMAIN}
 }
 
 {$VPCOMM_DOMAIN} {

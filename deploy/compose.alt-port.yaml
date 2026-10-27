@@ -1,0 +1,6 @@
+# Publish Caddy on 8443 only, for hosts where another service already owns 80/443.
+# Use with deploy/Caddyfile.private: public ACME validation needs 80 or 443.
+services:
+  caddy:
+    ports: !override
+      - "8443:443"
