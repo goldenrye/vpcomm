@@ -1,0 +1,18 @@
+{
+	admin off
+}
+
+{$VPCOMM_DOMAIN} {
+	# Issue a certificate from Caddy's private CA, including IP-address SANs.
+	tls internal
+	header -Server
+	@relay path /relay /healthz
+	handle @relay {
+		reverse_proxy relay:8765 {
+			flush_interval -1
+		}
+	}
+	handle {
+		respond "Not found" 404
+	}
+}

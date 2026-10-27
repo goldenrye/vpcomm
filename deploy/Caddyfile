@@ -1,0 +1,20 @@
+{
+	admin off
+}
+
+{$VPCOMM_DOMAIN} {
+	# Access logging is intentionally disabled. Do not add a "log" directive.
+	header {
+		-Server
+		Strict-Transport-Security "max-age=31536000"
+	}
+	@relay path /relay /healthz
+	handle @relay {
+		reverse_proxy relay:8765 {
+			flush_interval -1
+		}
+	}
+	handle {
+		respond "Not found" 404
+	}
+}

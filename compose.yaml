@@ -1,0 +1,57 @@
+services:
+  relay:
+    build: .
+    restart: unless-stopped
+    environment:
+      VPCOMM_ACCESS_TOKEN: ${VPCOMM_ACCESS_TOKEN:?Set VPCOMM_ACCESS_TOKEN in .env}
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 256m
+    cpus: 1.0
+    networks: [backend]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/healthz', timeout=2)"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+    logging:
+      driver: local
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  caddy:
+    image: caddy:2.10.2-alpine
+    restart: unless-stopped
+    environment:
+      VPCOMM_DOMAIN: ${VPCOMM_DOMAIN:?Set VPCOMM_DOMAIN in .env}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${VPCOMM_CADDYFILE:-./deploy/Caddyfile}:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [edge, backend]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 128
+    mem_limit: 256m
+    depends_on:
+      relay:
+        condition: service_healthy
+    logging:
+      driver: local
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+networks:
+  edge:
+  backend:
+    internal: true
+
+volumes:
+  caddy_data:
+  caddy_config:

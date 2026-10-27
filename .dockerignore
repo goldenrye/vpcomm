@@ -1,0 +1,5 @@
+*
+!pyproject.toml
+!requirements-server.txt
+!vpcomm/
+!vpcomm/*.py
