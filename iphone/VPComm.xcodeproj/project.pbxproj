@@ -1,0 +1,46 @@
+// !$*UTF8*$!
+{
+ archiveVersion = 1;
+ classes = {};
+ objectVersion = 56;
+ objects = {
+  A00000000000000000000001 = {isa = PBXProject; buildConfigurationList = A00000000000000000000002; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; knownRegions = (en, Base); mainGroup = A00000000000000000000003; productRefGroup = A00000000000000000000004; projectDirPath = ""; projectRoot = ""; targets = (A00000000000000000000005, B00000000000000000000001); };
+  A00000000000000000000002 = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000010, A00000000000000000000011); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+  A00000000000000000000003 = {isa = PBXGroup; children = (A00000000000000000000020, A00000000000000000000021, B00000000000000000000002, A00000000000000000000004); sourceTree = "<group>"; };
+  A00000000000000000000004 = {isa = PBXGroup; name = Products; children = (A00000000000000000000006, B00000000000000000000003); sourceTree = "<group>"; };
+  A00000000000000000000005 = {isa = PBXNativeTarget; name = VPComm; productName = VPComm; productReference = A00000000000000000000006; productType = "com.apple.product-type.application"; buildConfigurationList = A00000000000000000000007; buildPhases = (A00000000000000000000008, A00000000000000000000009); buildRules = (); dependencies = (); };
+  A00000000000000000000006 = {isa = PBXFileReference; explicitFileType = wrapper.application; path = VPComm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+  A00000000000000000000007 = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000012, A00000000000000000000013); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+  A00000000000000000000008 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000040, A00000000000000000000041, A00000000000000000000042, A00000000000000000000043, A00000000000000000000044); runOnlyForDeploymentPostprocessing = 0; };
+  A00000000000000000000009 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+  A00000000000000000000010 = {isa = XCBuildConfiguration; name = Debug; buildSettings = {SDKROOT = iphoneos; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SWIFT_VERSION = 5.0; CLANG_ENABLE_MODULES = YES; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; ENABLE_TESTABILITY = YES; ONLY_ACTIVE_ARCH = YES; }; };
+  A00000000000000000000011 = {isa = XCBuildConfiguration; name = Release; buildSettings = {SDKROOT = iphoneos; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SWIFT_VERSION = 5.0; CLANG_ENABLE_MODULES = YES; SWIFT_OPTIMIZATION_LEVEL = "-O"; SWIFT_COMPILATION_MODE = wholemodule; }; };
+  A00000000000000000000012 = {isa = XCBuildConfiguration; name = Debug; buildSettings = {PRODUCT_BUNDLE_IDENTIFIER = org.vpcomm.iphone; PRODUCT_NAME = "$(TARGET_NAME)"; INFOPLIST_FILE = App/Info.plist; GENERATE_INFOPLIST_FILE = NO; CODE_SIGN_STYLE = Automatic; TARGETED_DEVICE_FAMILY = 1; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SUPPORTS_MACCATALYST = NO; LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks"); }; };
+  A00000000000000000000013 = {isa = XCBuildConfiguration; name = Release; buildSettings = {PRODUCT_BUNDLE_IDENTIFIER = org.vpcomm.iphone; PRODUCT_NAME = "$(TARGET_NAME)"; INFOPLIST_FILE = App/Info.plist; GENERATE_INFOPLIST_FILE = NO; CODE_SIGN_STYLE = Automatic; TARGETED_DEVICE_FAMILY = 1; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SUPPORTS_MACCATALYST = NO; LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks"); }; };
+  A00000000000000000000020 = {isa = PBXGroup; path = App; sourceTree = "<group>"; children = (A00000000000000000000030, A00000000000000000000031, A00000000000000000000032, A00000000000000000000035); };
+  A00000000000000000000021 = {isa = PBXGroup; path = Core; sourceTree = "<group>"; children = (A00000000000000000000033, A00000000000000000000034); };
+  A00000000000000000000030 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPCommApp.swift; sourceTree = "<group>"; };
+  A00000000000000000000031 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStore.swift; sourceTree = "<group>"; };
+  A00000000000000000000032 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioIO.swift; sourceTree = "<group>"; };
+  A00000000000000000000033 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+  A00000000000000000000034 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relay.swift; sourceTree = "<group>"; };
+  A00000000000000000000035 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+  A00000000000000000000040 = {isa = PBXBuildFile; fileRef = A00000000000000000000030; };
+  A00000000000000000000041 = {isa = PBXBuildFile; fileRef = A00000000000000000000031; };
+  A00000000000000000000042 = {isa = PBXBuildFile; fileRef = A00000000000000000000032; };
+  A00000000000000000000043 = {isa = PBXBuildFile; fileRef = A00000000000000000000033; };
+  A00000000000000000000044 = {isa = PBXBuildFile; fileRef = A00000000000000000000034; };
+  B00000000000000000000001 = {isa = PBXNativeTarget; name = VPCommUITests; productName = VPCommUITests; productReference = B00000000000000000000003; productType = "com.apple.product-type.bundle.ui-testing"; buildConfigurationList = B00000000000000000000004; buildPhases = (B00000000000000000000005); buildRules = (); dependencies = (B00000000000000000000010); };
+  B00000000000000000000002 = {isa = PBXGroup; path = Tests; sourceTree = "<group>"; children = (B00000000000000000000006); };
+  B00000000000000000000003 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = VPCommUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+  B00000000000000000000004 = {isa = XCConfigurationList; buildConfigurations = (B00000000000000000000007, B00000000000000000000008); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+  B00000000000000000000005 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B00000000000000000000011); runOnlyForDeploymentPostprocessing = 0; };
+  B00000000000000000000006 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceTests.swift; sourceTree = "<group>"; };
+  B00000000000000000000007 = {isa = XCBuildConfiguration; name = Debug; buildSettings = {GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = org.vpcomm.iphone.tests; PRODUCT_NAME = "$(TARGET_NAME)"; TEST_TARGET_NAME = VPComm; CODE_SIGN_STYLE = Automatic; TARGETED_DEVICE_FAMILY = 1; }; };
+  B00000000000000000000008 = {isa = XCBuildConfiguration; name = Release; buildSettings = {GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = org.vpcomm.iphone.tests; PRODUCT_NAME = "$(TARGET_NAME)"; TEST_TARGET_NAME = VPComm; CODE_SIGN_STYLE = Automatic; TARGETED_DEVICE_FAMILY = 1; }; };
+  B00000000000000000000009 = {isa = PBXContainerItemProxy; containerPortal = A00000000000000000000001; proxyType = 1; remoteGlobalIDString = A00000000000000000000005; remoteInfo = VPComm; };
+  B00000000000000000000010 = {isa = PBXTargetDependency; target = A00000000000000000000005; targetProxy = B00000000000000000000009; };
+  B00000000000000000000011 = {isa = PBXBuildFile; fileRef = B00000000000000000000006; };
+ };
+ rootObject = A00000000000000000000001;
+}

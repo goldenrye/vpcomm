@@ -175,12 +175,17 @@ real local WebSocket relay. Synthetic tests do not record or play real sound.
   runtime versions; Docker base tags and development extras are not immutable
   supply-chain locks.
 
-## Stage Two: iPhone
+## iPhone Client
 
-Keep the server relay boundary, but agree on a reviewed production protocol
-before freezing a mobile implementation. An iOS client can use CryptoKit for
-the existing X25519/HKDF/AES-GCM primitives, URLSession WebSockets for transport,
-and AVAudioEngine for audio. Add protocol interoperability vectors first.
+A native iOS 16+ client is available in [`iphone/`](iphone/README.md). Open
+`iphone/VPComm.xcodeproj` in Xcode, select your development signing team, and run
+it on your iPhone. It supports foreground calls with the desktop client or
+another iPhone, invitation sharing, verification codes, mute, hang-up, and
+private-CA certificates without changing the relay.
+
+See the [iPhone guide](iphone/README.md) for installation, TLS setup, tests, and
+physical-device acceptance checks. The microphone opens only after peer key
+confirmation. Backgrounding or audio interruption ends the call.
 
 Before wider deployment: independent protocol review, durable contact
 authentication, Opus compression, echo cancellation, device lifecycle and
@@ -190,4 +195,4 @@ and a real-time media transport evaluation.
 iOS background calling and incoming-call UX need a separate design. CallKit
 and APNs can introduce Apple infrastructure and developer-program costs;
 foreground-only calls avoid relying on push delivery, but have usability
-limits. Stage one does not implement an iPhone client.
+limits. This client does not implement background ringing or push notifications.
